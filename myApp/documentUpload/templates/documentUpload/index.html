@@ -1,3 +1,14 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +16,17 @@
     <title>Index</title>
 </head>
 <body>
-<h1>Welcome to Index Page</h1>
-<p>welcome boss {{ name }} {{ surname }}</p>
+<div class="container">
+    <br>
+    <h1>Welcome to document page {{name}}{{surname}}</h1>
+</div>
+<div class="container">
+    <div class="row">
+        {% load static %}
+        <img src="{% static 'iau.png' %}" alt="Static image" style="width: 10%; height: 10%;">
+    </div>
+
+</div>
+
 </body>
 </html>
