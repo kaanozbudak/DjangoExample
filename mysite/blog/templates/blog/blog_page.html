@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block body_class %}
     template-blogpage
@@ -13,4 +14,12 @@
     <br>
     <div>{{ page.body|richtext }}</div>
     <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    {% with page.all_images as all_images %}
+        {% for item in all_images %}
+            <div style="float: left; margin: 10px">
+                {% image item.image fill-320x240 %}
+                <p>{{ item.caption }}</p>
+            </div>
+        {% endfor %}
+    {% endwith %}
 {% endblock %}
