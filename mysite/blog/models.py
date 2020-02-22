@@ -13,6 +13,8 @@ from wagtail.search import index
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from wagtailvideos.edit_handlers import VideoChooserPanel
+
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -53,6 +55,11 @@ class BlogPage(Page):
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
+    header_video = models.ForeignKey('wagtailvideos.Video',
+                                     related_name='+',
+                                     null=True,
+                                     on_delete=models.SET_NULL)
+
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
         index.SearchField('body'),
@@ -66,6 +73,7 @@ class BlogPage(Page):
         FieldPanel('intro'),
         FieldPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
+        VideoChooserPanel('header_video'),
     ]
 
     def all_images(self):
